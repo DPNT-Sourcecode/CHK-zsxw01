@@ -30,7 +30,7 @@ DICT_SPECIAL_OFFER = dict(A=dict(qty=3, price=130),
                           B=dict(qty=2, price=45))
 
 
-DICT_FREE_ITEM_OFFER = dict(E=dict(qty=2, items=[dict(B=dict(qty=1))]))
+DICT_FREE_ITEM_OFFER = dict(E=dict(qty=2, free_items=[dict(B=dict(qty=1))]))
 
 def _clean_from_free(skus_counter):
     """
@@ -41,8 +41,15 @@ def _clean_from_free(skus_counter):
     for item in skus_counter:
         if item in DICT_FREE_ITEM_OFFER:
             free_item_qty = DICT_FREE_ITEM_OFFER[item]['qty']
+            mult = skus_counter[item]/free_item_qty
 
-            
+            for free_item in DICT_FREE_ITEM_OFFER[item]['free_items']:
+                if free_item in skus_counter:
+                    clean_qty = mult * free_item['qty']
+                    print clean_qty
+
+
+
 
 
 def chunk_string(s, n):
