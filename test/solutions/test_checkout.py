@@ -5,6 +5,15 @@ from checkout import checkout
 
 class TestCheckout(unittest.TestCase):
 
+    def test_checkout_with_2F(self):
+        self.assertEqual(checkout('FF'), 10*2)
+
+    def test_checkout_with_3F(self):
+        self.assertEqual(checkout('FFF'), 10*2)
+
+    def test_checkout_with_moreF(self):
+        self.assertEqual(checkout('FFFFFFFFFFFF'), (12/3*2)*2)
+
     def test_checkout_with_double_special_offer(self):
         self.assertEqual(checkout('AAAAAAAAAAAAA'), 530)
 
