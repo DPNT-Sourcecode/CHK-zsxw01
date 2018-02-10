@@ -76,8 +76,16 @@ def _clean_from_free(skus_counter):
 
 def _calc_buy_any(skus_counter, result, total_price=45, list_item=['S','T','X','Y','Z'], no_item=3):
 
+    # Count of all product in list_item
+    c = 0
+    for item in skus_counter:
+        if item in list_item:
+            c += skus_counter[item]
 
-    # i make a count of all product in list_item
+    no_group = c / no_item
+
+    if no_group > 0:
+        result += total_price * no_group
 
     # i see if i obtain > 0 with /no_item
       # i increase result
