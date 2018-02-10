@@ -77,10 +77,12 @@ def _clean_from_free(skus_counter):
     return skus_counter
 
 
-def _calc_buy_any(skus_counter, result, DICT_GROUP_OFFER):
-    list_item = DICT_GROUP_OFFER['list_item']
-    total_price = DICT_GROUP_OFFER['total_price']
-    no_item = DICT_GROUP_OFFER['no_item']
+def _calc_buy_any(skus_counter, result, dict_group_offer):
+    print '_calc_buy_any skus_counter'
+    print skus_counter
+    list_item = dict_group_offer['list_item']
+    total_price = dict_group_offer['total_price']
+    no_item = dict_group_offer['no_item']
 
     # Count of all product in list_item
     c = 0
@@ -88,7 +90,10 @@ def _calc_buy_any(skus_counter, result, DICT_GROUP_OFFER):
         if item in list_item:
             c += skus_counter[item]
 
+    print 'I have c %s' % c
     no_group = c / no_item
+
+    print 'no_group %s' % no_group
 
     if no_group > 0:
         result += total_price * no_group
@@ -106,6 +111,8 @@ def _calc_buy_any(skus_counter, result, DICT_GROUP_OFFER):
                         i -= skus_counter[item]
                         skus_counter[item] = 0
 
+    print 'skus_counter end'
+    print skus_counter
     return skus_counter, result
 
 
@@ -141,6 +148,8 @@ def checkout(skus):
 
     # call f(x) to get objects free.
     skus_counter = _clean_from_free(skus_counter)
+
+    skus_counter, result = _calc_buy_any(skus_counter, result, DICT_GROUP_OFFER)
 
     # call f(xt) to calc_special offer
     skus_counter, result = _calc_special_offer(skus_counter, result, DICT_SPECIAL_OFFER_1)
