@@ -33,9 +33,16 @@ DICT_SPECIAL_OFFER = dict(A=dict(qty=3, price=130),
 DICT_FREE_ITEM_OFFER = dict(E=dict(qty=2, items=[dict(B=dict(qty=1))]))
 
 def _clean_from_free(skus_counter):
+    """
+    function to clean obj.
+    :param skus_counter:
+    :return:
+    """
     for item in skus_counter:
         if item in DICT_FREE_ITEM_OFFER:
-            free_item = DICT_FREE_ITEM_OFFER[item]
+            free_item_qty = DICT_FREE_ITEM_OFFER[item]['qty']
+
+            
 
 
 def chunk_string(s, n):
