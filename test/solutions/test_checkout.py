@@ -60,14 +60,14 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout('P'), 50)
         self.assertEqual(checkout('Q'), 30)
         self.assertEqual(checkout('R'), 50)
-        self.assertEqual(checkout('S'), 30)
+        self.assertEqual(checkout('S'), 20)
         self.assertEqual(checkout('T'), 20)
         self.assertEqual(checkout('U'), 40)
         self.assertEqual(checkout('V'), 50)
         self.assertEqual(checkout('W'), 20)
-        self.assertEqual(checkout('X'), 90)
-        self.assertEqual(checkout('Y'), 10)
-        self.assertEqual(checkout('Z'), 50)
+        self.assertEqual(checkout('X'), 17)
+        self.assertEqual(checkout('Y'), 20)
+        self.assertEqual(checkout('Z'), 21)
 
     def test_checkout_A(self):
         self.assertEqual(checkout('A'), 50)
@@ -148,9 +148,14 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout('XYZSST'), 90)
         self.assertEqual(checkout('TTTTTT'), 90)
         self.assertEqual(checkout('TTTTTTT'), 90 + 20)
-        #self.assertEqual(checkout('ZZZZZZZ'), 90 + 21)
         self.assertEqual(checkout('TTTZZZZ'), 90 + 20)
         self.assertEqual(checkout('ZZZZZZZ'), 90 + 21)
+
+        self.assertEqual(checkout('TTTTTTTT'), 90 + 20 * 2)
+        self.assertEqual(checkout('XXXXXXXX'), 90 + 17 * 2)
+        self.assertEqual(checkout('SSSSSSSS'), 90 + 20 * 2)
+
+
     #
     # def test_checkout_double(self):
     #     self.assertEqual(checkout('BBAB'), 75+50)
