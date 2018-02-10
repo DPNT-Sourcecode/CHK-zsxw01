@@ -25,7 +25,7 @@ Where:
 
 DICT_PRICE = dict(A=50, B=30, C=20, D=15)
 
-DICT_SPECIAL_OFFER = dict(A=dict(qty=3, price=150),
+DICT_SPECIAL_OFFER = dict(A=dict(qty=3, price=130),
                           B=dict(qty=2, price=45))
 
 # noinspection PyUnusedLocal
