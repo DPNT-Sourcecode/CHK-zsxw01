@@ -73,13 +73,16 @@ def _clean_from_free(skus_counter):
 
     return skus_counter
 
-import itertools
 
-def _calc_buy_any(skus_counter, skus, result, list_item, no_item):
-    keywords = [''.join(i) for i in itertools.product(list_item, repeat=no_item)]
-    skus_counter_group = Counter(chunk_string(skus, no_item))
+def _calc_buy_any(skus_counter, result, total_price=45, list_item=['S','T','X','Y','Z'], no_item=3):
 
-    # check if I arrive at 3 items with skus_counter
+
+    # i make a count of all product in list_item
+
+    # i see if i obtain > 0 with /no_item
+      # i increase result
+      # i decrease the count in skus_counter
+
 
     return skus_counter, result
 
