@@ -34,14 +34,12 @@ def checkout(skus):
 
     result = 0
 
-    for sku in skus.split():
-        print "sku"
-        print sku
-        print sku[0][:-1]
-        print sku[0][-1]
-        print "======="
-        qty = int(sku[0][:-1])
-        item = sku[0][-1]
+    for sku in skus.split(' '):
+        print 'SKU %s' % sku
+        print result
+
+        qty = int(sku[:-1])
+        item = sku[-1]
         special_offer_qty = None
 
         # check if item has special offers.
@@ -65,5 +63,5 @@ def checkout(skus):
         else:
             return -1
 
-
-    raise NotImplementedError()
+    print result
+    return result
