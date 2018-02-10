@@ -26,6 +26,8 @@ from collections import Counter
 
 DICT_PRICE = dict(A=50, B=30, C=20, D=15, E=40)
 
+DICT_SPECIAL_OFFER_1 = dict(A=dict(qty=5, price=200))
+
 DICT_SPECIAL_OFFER = dict(A=dict(qty=3, price=130),
                           B=dict(qty=2, price=45))
 
@@ -55,6 +57,24 @@ def _clean_from_free(skus_counter):
     return skus_counter
 
 
+def _calc_special_offer(skus_counter, result, dict_special_offer):
+    for item in skus_counter:
+
+        qty = skus_counter[item]
+
+        # check if item has special offers.
+        if item in dict_special_offer:
+            special_offer_price = dict_special_offer[item]['price']
+            special_offer_qty = dict_special_offer[item]['qty']
+
+            # I use / as I have integer => 5/2 = 2
+            no_pack = (qty / special_offer_qty)
+            result += no_pack * special_offer_price
+
+            skus_counter[item] -= no_pack * special_offer_qty
+
+    return skus_counter, result
+
 def chunk_string(s, n):
     """
     Create a group of letters/number giving a string.
@@ -67,8 +87,20 @@ def checkout(skus):
     result = 0
     skus_counter = Counter(chunk_string(skus, 1))
 
+    print '1 ---'
+    print skus_counter
+
     # call f(x) to get objects free.
     skus_counter = _clean_from_free(skus_counter)
+
+    print '2 ---'
+    print skus_counter
+
+    skus_counter, result = _calc_special_offer(skus_counter, result, DICT_SPECIAL_OFFER_1)
+
+    print '3 ---'
+    print skus_counter
+    print result
 
     for item in skus_counter:
 
