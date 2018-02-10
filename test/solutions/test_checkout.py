@@ -30,7 +30,7 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout('EEEEEBBBB'), 5*40+45)
 
     def test_checkout_with_double_special_offer(self):
-        self.assertEqual(checkout('XXX'), -1)
+        self.assertEqual(checkout('XXX'), 90*3)
 
     def test_checkout_illegal(self):
         self.assertEqual(checkout('ABCa'), -1)
@@ -47,17 +47,17 @@ class TestCheckout(unittest.TestCase):
     #
 
     def test_checkout_A(self):
-        self.assertEqual(checkout('A', 50))
-        self.assertEqual(checkout('AAA', 130))
-        self.assertEqual(checkout('AAAa', -1))
-        self.assertEqual(checkout('AAAAA', 200))
-        self.assertEqual(checkout('AAAAAAAA', 200+130))
-        self.assertEqual(checkout('AAAAAAAAA', 200 + 130+50))
+        self.assertEqual(checkout('A'), 50)
+        self.assertEqual(checkout('AAA'), 130)
+        self.assertEqual(checkout('AAAa'), -1)
+        self.assertEqual(checkout('AAAAA'), 200)
+        self.assertEqual(checkout('AAAAAAAA'), 200+130)
+        self.assertEqual(checkout('AAAAAAAAA'), 200 + 130+50)
 
     def test_checkout_B(self):
-        self.assertEqual(checkout('B', 30))
-        self.assertEqual(checkout('BB', 45))
-        self.assertEqual(checkout('BBB', 45+30))
+        self.assertEqual(checkout('B'), 30)
+        self.assertEqual(checkout('BB'), 45)
+        self.assertEqual(checkout('BBB'), 45+30)
 
 
     #
