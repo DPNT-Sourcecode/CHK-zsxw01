@@ -48,6 +48,9 @@ DICT_FREE_ITEM_OFFER = dict(E=dict(qty=2, free_items=[dict(B=dict(qty=1))]),
                             R=dict(qty=3, free_items=[dict(Q=dict(qty=1))]),
                             U=dict(qty=4, free_items=[dict(U=dict(qty=1))]))
 
+
+DICT_GROUP_OFFER = dict(total_price=45, list_item=['S', 'T', 'X', 'Y', 'Z'], no_item=3)
+
 # TODO: this should be move in a 'constants.py' and/or create model with these values - END
 
 def _clean_from_free(skus_counter):
@@ -74,7 +77,10 @@ def _clean_from_free(skus_counter):
     return skus_counter
 
 
-def _calc_buy_any(skus_counter, result, total_price=45, list_item=['S','T','X','Y','Z'], no_item=3):
+def _calc_buy_any(skus_counter, result, DICT_GROUP_OFFER):
+    list_item = DICT_GROUP_OFFER['list_item']
+    total_price = DICT_GROUP_OFFER['total_price']
+    no_item = DICT_GROUP_OFFER['no_item']
 
     # Count of all product in list_item
     c = 0
@@ -87,10 +93,18 @@ def _calc_buy_any(skus_counter, result, total_price=45, list_item=['S','T','X','
     if no_group > 0:
         result += total_price * no_group
 
-    # i see if i obtain > 0 with /no_item
-      # i increase result
-      # i decrease the count in skus_counter
+        # i decrease the count in skus_counter
+        i = no_group * no_item
+        while i > 0:
+            for item in skus_counter:
+                if item in list_item:
 
+                    if skus_counter[item] >= i:
+                        skus_counter[item] -= i
+                        i = 0
+                    else:
+                        i -= skus_counter[item]
+                        skus_counter[item] = 0
 
     return skus_counter, result
 
