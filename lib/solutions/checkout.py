@@ -38,18 +38,11 @@ def checkout(skus):
 
     result = 0
     skus_counter = Counter(chunk_string(skus, 1))
-    print skus_counter
+    #print skus_counter
 
     for item in skus_counter:
 
         qty = skus_counter[item]
-
-        # try:
-        #     qty = int(sku[:-1])
-        # except ValueError:
-        #     return -1
-        #
-        # item = sku[-1]
         special_offer_qty = None
 
         # check if item has special offers.
@@ -73,5 +66,5 @@ def checkout(skus):
         else:
             return -1
 
-    print result
+    #print result
     return result
