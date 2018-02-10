@@ -31,6 +31,7 @@ DICT_SPECIAL_OFFER = dict(A=dict(qty=3, price=130),
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
+    "ABCDCBAABCABBAAA"
 
     result = 0
 
