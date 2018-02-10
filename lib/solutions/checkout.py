@@ -87,28 +87,16 @@ def checkout(skus):
     result = 0
     skus_counter = Counter(chunk_string(skus, 1))
 
-    print '1 ---'
-    print skus_counter
-
     # call f(x) to get objects free.
     skus_counter = _clean_from_free(skus_counter)
 
-    print '2 ---'
-    print skus_counter
 
     skus_counter, result = _calc_special_offer(skus_counter, result, DICT_SPECIAL_OFFER_1)
 
 
-    print '3 ---'
-    print skus_counter
-    print result
-
     skus_counter, result = _calc_special_offer(skus_counter, result, DICT_SPECIAL_OFFER)
 
 
-    print '4 ---'
-    print skus_counter
-    print result
 
     for item in skus_counter:
 
