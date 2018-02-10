@@ -35,10 +35,10 @@ def chunk_string(s, n):
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    "ABCDCBAABCABBAAA"
 
     result = 0
     skus_counter = Counter(chunk_string(skus, 1))
+    print skus_counter
 
     for sku in skus_counter:
 
@@ -74,4 +74,5 @@ def checkout(skus):
         else:
             return -1
 
+    print result
     return result
