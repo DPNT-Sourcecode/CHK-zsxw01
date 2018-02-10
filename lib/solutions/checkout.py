@@ -98,7 +98,15 @@ def checkout(skus):
 
     skus_counter, result = _calc_special_offer(skus_counter, result, DICT_SPECIAL_OFFER_1)
 
+
     print '3 ---'
+    print skus_counter
+    print result
+
+    skus_counter, result = _calc_special_offer(skus_counter, result, DICT_SPECIAL_OFFER)
+
+
+    print '4 ---'
     print skus_counter
     print result
 
@@ -107,15 +115,15 @@ def checkout(skus):
         qty = skus_counter[item]
         special_offer_qty = None
 
-        # todo: add example special offers.
-
-        # check if item has special offers.
-        if item in DICT_SPECIAL_OFFER:
-            special_offer_price = DICT_SPECIAL_OFFER[item]['price']
-            special_offer_qty = DICT_SPECIAL_OFFER[item]['qty']
-
-            # I use / as I have integer => 5/2 = 2
-            result += qty / special_offer_qty * special_offer_price
+        # # todo: add example special offers.
+        #
+        # # check if item has special offers.
+        # if item in DICT_SPECIAL_OFFER:
+        #     special_offer_price = DICT_SPECIAL_OFFER[item]['price']
+        #     special_offer_qty = DICT_SPECIAL_OFFER[item]['qty']
+        #
+        #     # I use / as I have integer => 5/2 = 2
+        #     result += qty / special_offer_qty * special_offer_price
 
         # check NO special offers => uses %
         if item in DICT_PRICE:
