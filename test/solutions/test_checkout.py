@@ -161,6 +161,13 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout('ZZZS'), 65)
         self.assertEqual(checkout('STXS'), 62)
 
+        self.assertEqual(checkout('XXXS'), 45 + 20)
+        self.assertEqual(checkout('XXXT'), 45 + 20)
+        self.assertEqual(checkout('XXXX'), 45 + 17)
+        self.assertEqual(checkout('XXXY'), 45 + 20)
+        self.assertEqual(checkout('XXXZ'), 45 + 21)
+
+
 
     #
     # def test_checkout_double(self):
