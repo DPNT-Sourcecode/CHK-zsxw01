@@ -24,7 +24,7 @@ Where:
 """
 from collections import Counter
 
-DICT_PRICE = dict(A=50, B=30, C=20, D=15, E=40)
+DICT_PRICE = dict(A=50, B=30, C=20, D=15, E=40, F=10)
 
 DICT_SPECIAL_OFFER_1 = dict(A=dict(qty=5, price=200))
 
@@ -32,7 +32,8 @@ DICT_SPECIAL_OFFER = dict(A=dict(qty=3, price=130),
                           B=dict(qty=2, price=45))
 
 
-DICT_FREE_ITEM_OFFER = dict(E=dict(qty=2, free_items=[dict(B=dict(qty=1))]))
+DICT_FREE_ITEM_OFFER = dict(E=dict(qty=2, free_items=[dict(B=dict(qty=1))]),
+                            F=dict(qty=3, free_items=[dict(F=dict(qty=1))]))
 
 def _clean_from_free(skus_counter):
     """
