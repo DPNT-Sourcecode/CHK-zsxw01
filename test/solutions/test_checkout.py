@@ -6,10 +6,16 @@ from checkout import checkout
 class TestCheckout(unittest.TestCase):
 
     def test_checkout_with_double_special_offer(self):
-        self.assertEqual(checkout('AAAAAAAAAAAAA'), 505)
+        self.assertEqual(checkout('AAAAAAAAAAAAA'), 530)
+
+    def test_checkout_with_single(self):
+        self.assertEqual(checkout('ABCDE'), 50+30+20+15+40)
 
     def test_checkout_with_free(self):
-        self.assertEqual(checkout('EEEEEBBB'), 505)
+        self.assertEqual(checkout('EEEEEBBB'), 5*40+(3-1)*30)
+
+    def test_checkout_with_free_special(self):
+        self.assertEqual(checkout('EEEEEBBBB'), 5*40+45)
 
     # def test_checkout_single_with_specialoffer(self):
     #     self.assertEqual(checkout('ABCDCBAABCABBAAA'), 505)
