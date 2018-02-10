@@ -35,8 +35,6 @@ def checkout(skus):
     result = 0
 
     for sku in skus.split(' '):
-        print 'SKU %s' % sku
-        print result
 
         qty = int(sku[:-1])
         item = sku[-1]
@@ -63,5 +61,4 @@ def checkout(skus):
         else:
             return -1
 
-    print result
     return result
