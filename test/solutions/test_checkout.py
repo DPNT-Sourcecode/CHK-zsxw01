@@ -4,6 +4,10 @@ from checkout import checkout
 
 
 class TestCheckout(unittest.TestCase):
+
+    def test_checkout_with_free(self):
+        self.assertEqual(checkout('EEEEEBBB'), 505)
+
     def test_checkout_single_with_specialoffer(self):
         self.assertEqual(checkout('ABCDCBAABCABBAAA'), 505)
 
