@@ -32,8 +32,8 @@ def checkout(skus):
 
     # loop sku_list
 
-        # check special offers
-    
-        # check NO special offers
+        # check special offers => uses /
+
+        # check NO special offers => uses %
 
     raise NotImplementedError()
