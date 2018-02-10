@@ -90,30 +90,14 @@ def checkout(skus):
     # call f(x) to get objects free.
     skus_counter = _clean_from_free(skus_counter)
 
-    print 'I HAVE'
-    print skus_counter
-
+    # call f(xt) to calc_special offer
     skus_counter, result = _calc_special_offer(skus_counter, result, DICT_SPECIAL_OFFER_1)
-
-
     skus_counter, result = _calc_special_offer(skus_counter, result, DICT_SPECIAL_OFFER)
 
-
-
+    # call the calc for other items.
     for item in skus_counter:
-
         qty = skus_counter[item]
         special_offer_qty = None
-
-        # # todo: add example special offers.
-        #
-        # # check if item has special offers.
-        # if item in DICT_SPECIAL_OFFER:
-        #     special_offer_price = DICT_SPECIAL_OFFER[item]['price']
-        #     special_offer_qty = DICT_SPECIAL_OFFER[item]['qty']
-        #
-        #     # I use / as I have integer => 5/2 = 2
-        #     result += qty / special_offer_qty * special_offer_price
 
         # check NO special offers => uses %
         if item in DICT_PRICE:
@@ -128,5 +112,4 @@ def checkout(skus):
         else:
             return -1
 
-    #print result
     return result
