@@ -50,7 +50,7 @@ DICT_FREE_ITEM_OFFER = dict(E=dict(qty=2, free_items=[dict(B=dict(qty=1))]),
                             U=dict(qty=4, free_items=[dict(U=dict(qty=1))]))
 
 
-DICT_GROUP_OFFER = dict(total_price=45, list_item=['S', 'T', 'X', 'Y', 'Z'], no_item=3)
+DICT_GROUP_OFFER = dict(total_price=45, list_item=['Z', 'Y', 'S', 'T', 'X'], no_item=3)
 
 # TODO: this should be move in a 'constants.py' and/or create model with these values - END
 
@@ -106,8 +106,10 @@ def _calc_buy_any(skus_counter, result, dict_group_offer):
         # i decrease the count in skus_counter
         i = no_group * no_item
         while i > 0:
-            for item in skus_counter:
-                if item in list_item:
+            for item in list_item:
+                if item in skus_counter:
+            #for item in skus_counter:
+                #if item in list_item:
 
                     if skus_counter[item] >= i:
                         skus_counter[item] -= i
