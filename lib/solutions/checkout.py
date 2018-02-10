@@ -23,6 +23,8 @@ Where:
 
 """
 
+DICT_PRICE = dict(A=50, B=30, C=20, D=15)
+
 DICT_SPECIAL_OFFER = dict(A=dict(qty=3, price=150),
                           B=dict(qty=2, price=45))
 
@@ -30,19 +32,28 @@ DICT_SPECIAL_OFFER = dict(A=dict(qty=3, price=150),
 # skus = unicode string
 def checkout(skus):
 
+    result = 0
+
     for sku in skus.split():
         qty = int(sku[0][:-1])
         item = sku[0][-1]
 
-        if item in DICT_SPECIAL_OFFER:
-
-    # split skus
-
-
-    # loop sku_list
+        special_offer_qty = 0
 
         # check special offers => uses /
+        if item in DICT_SPECIAL_OFFER:
+            special_offer_price = DICT_SPECIAL_OFFER[item]['price']
+            special_offer_qty = DICT_SPECIAL_OFFER[item]['qty']
+
+            # use / as I have integer => 
+            result += qty/special_offer_qty*special_offer_price
 
         # check NO special offers => uses %
+        if item in DICT_PRICE:
+            print 'calculate normal price'
+            # check % with special_offer_qty
+        else:
+            return -1
+
 
     raise NotImplementedError()
