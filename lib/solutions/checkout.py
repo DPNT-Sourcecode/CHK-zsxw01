@@ -78,8 +78,14 @@ def _clean_from_free(skus_counter):
 
 
 def _calc_buy_any(skus_counter, result, dict_group_offer):
-    print '_calc_buy_any skus_counter'
-    print skus_counter
+    """
+    Function to group and update the skus_counter.
+    :param skus_counter:
+    :param result:
+    :param dict_group_offer:
+    :return:
+    """
+
     list_item = dict_group_offer['list_item']
     total_price = dict_group_offer['total_price']
     no_item = dict_group_offer['no_item']
@@ -90,10 +96,8 @@ def _calc_buy_any(skus_counter, result, dict_group_offer):
         if item in list_item:
             c += skus_counter[item]
 
-    print 'I have c %s' % c
+    # check the no_group.
     no_group = c / no_item
-
-    print 'no_group %s' % no_group
 
     if no_group > 0:
         result += total_price * no_group
@@ -111,8 +115,6 @@ def _calc_buy_any(skus_counter, result, dict_group_offer):
                         i -= skus_counter[item]
                         skus_counter[item] = 0
 
-    print 'skus_counter end'
-    print skus_counter
     return skus_counter, result
 
 

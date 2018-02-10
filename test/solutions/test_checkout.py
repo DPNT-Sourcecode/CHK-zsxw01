@@ -24,7 +24,8 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout('EEEEEBBBB'), 5 * 40 + 45)
 
     def test_checkout_with_double_special_offer(self):
-        self.assertEqual(checkout('XXX'), 90 * 3)
+        #self.assertEqual(checkout('XXX'), 90 * 3)
+        self.assertEqual(checkout('XXX'), 45)
 
     def test_checkout_illegal(self):
         self.assertEqual(checkout('ABCa'), -1)
