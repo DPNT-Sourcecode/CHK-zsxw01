@@ -5,7 +5,7 @@ from checkout import checkout
 
 class TestCheckout(unittest.TestCase):
     def test_checkout_single_with_specialoffer(self):
-        self.assertEqual(checkout('2B'), 45)
+        self.assertEqual(checkout('ABCDCBAABCABBAAA'), 45)
 
     def test_checkout_single(self):
         self.assertEqual(checkout('3B'), 75)

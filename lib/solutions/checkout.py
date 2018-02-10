@@ -22,27 +22,35 @@ Where:
  - @return = an Integer representing the total checkout value of the items
 
 """
+from collections import Counter
 
 DICT_PRICE = dict(A=50, B=30, C=20, D=15)
 
 DICT_SPECIAL_OFFER = dict(A=dict(qty=3, price=130),
                           B=dict(qty=2, price=45))
 
+
+def chunk_string(s, n):
+    return [s[i:i+n] for i in range(len(s)-n+1)]
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
     "ABCDCBAABCABBAAA"
 
     result = 0
+    skus_counter = Counter(chunk_string(skus, 1))
 
-    for sku in skus.split(' '):
+    for sku in skus_counter:
 
-        try:
-            qty = int(sku[:-1])
-        except ValueError:
-            return -1
+        item = sku
+        qty = skus_counter[sku]
 
-        item = sku[-1]
+        # try:
+        #     qty = int(sku[:-1])
+        # except ValueError:
+        #     return -1
+        #
+        # item = sku[-1]
         special_offer_qty = None
 
         # check if item has special offers.
