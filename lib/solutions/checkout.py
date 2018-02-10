@@ -35,11 +35,14 @@ def checkout(skus):
     result = 0
 
     for sku in skus.split():
+        print "sku"
+        print sku
+        print sku[0][:-1]
+        print sku[0][-1]
+        print "======="
         qty = int(sku[0][:-1])
         item = sku[0][-1]
-
-        # I use special_offer_qty = 1 for mod. (it there aren't offers).
-        special_offer_qty = 1
+        special_offer_qty = None
 
         # check if item has special offers.
         if item in DICT_SPECIAL_OFFER:
@@ -47,16 +50,18 @@ def checkout(skus):
             special_offer_qty = DICT_SPECIAL_OFFER[item]['qty']
 
             # I use / as I have integer => 5/2 = 2
-            result += qty/special_offer_qty*special_offer_price
+            result += qty / special_offer_qty * special_offer_price
 
         # check NO special offers => uses %
         if item in DICT_PRICE:
             price = DICT_PRICE[item]
 
-            result += qty%special_offer_qty*price
+            # check % with special_offer_qty
+            if special_offer_qty:
+                result += qty % special_offer_qty * price
+            else:
+                result += qty * price
 
-            print 'calculate normal price'
-            # check % with special_offer_qty (default 1
         else:
             return -1
 

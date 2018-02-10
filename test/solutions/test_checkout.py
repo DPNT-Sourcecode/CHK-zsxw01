@@ -1,6 +1,6 @@
 import unittest
 
-from lib.solutions.checkout import checkout
+from checkout import checkout
 
 
 class TestCheckout(unittest.TestCase):
