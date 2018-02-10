@@ -141,6 +141,16 @@ class TestCheckout(unittest.TestCase):
 
     def test_checkout_space(self):
         self.assertEqual(checkout(''), 0)
+
+
+    def test_checkout_group(self):
+        self.assertEqual(checkout('SSS'), 45)
+        self.assertEqual(checkout('XYZSST'), 90)
+        self.assertEqual(checkout('TTTTTT'), 90)
+        self.assertEqual(checkout('TTTTTTT'), 90 + 20)
+        #self.assertEqual(checkout('ZZZZZZZ'), 90 + 21)
+        self.assertEqual(checkout('TTTZZZZ'), 90 + 20)
+        self.assertEqual(checkout('ZZZZZZZ'), 90 + 21)
     #
     # def test_checkout_double(self):
     #     self.assertEqual(checkout('BBAB'), 75+50)
