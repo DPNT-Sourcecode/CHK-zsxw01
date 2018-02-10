@@ -9,7 +9,7 @@ class TestCheckout(unittest.TestCase):
 
     def test_checkout_single(self):
         self.assertEqual(checkout('3B'), 75)
-        
+
     def test_checkout_illegal(self):
         self.assertEqual(checkout('B'), -1)
 

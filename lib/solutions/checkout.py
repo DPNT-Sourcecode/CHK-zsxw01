@@ -36,7 +36,11 @@ def checkout(skus):
 
     for sku in skus.split(' '):
 
-        qty = int(sku[:-1])
+        try:
+            qty = int(sku[:-1])
+        except ValueError:
+            return -1
+
         item = sku[-1]
         special_offer_qty = None
 
