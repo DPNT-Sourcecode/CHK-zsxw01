@@ -52,7 +52,7 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout('H'), 10)
         self.assertEqual(checkout('I'), 35)
         self.assertEqual(checkout('J'), 60)
-        self.assertEqual(checkout('K'), 80)
+        self.assertEqual(checkout('K'), 70)
         self.assertEqual(checkout('L'), 90)
         self.assertEqual(checkout('M'), 15)
         self.assertEqual(checkout('N'), 40)
@@ -99,8 +99,8 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout('HHHHHHHHHHHHHHHH'), 80 + 45 + 10)
 
     def test_checkout_K(self):
-        self.assertEqual(checkout('K'), 80)
-        self.assertEqual(checkout('KK'), 150)
+        self.assertEqual(checkout('K'), 70)
+        self.assertEqual(checkout('KK'), 120)
 
     def test_checkout_N(self):
         self.assertEqual(checkout('NNN'), 40 * 3)

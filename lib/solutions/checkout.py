@@ -26,8 +26,9 @@ from collections import Counter
 
 # TODO: this should be move in a 'constants.py' and/or create model with these values - INIT
 
-DICT_PRICE = dict(A=50, B=30, C=20, D=15, E=40, F=10, G=20, H=10, I=35, J=60, K=80, L=90, M=15, N=40, O=10,
-                  P=50, Q=30, R=50, S=30, T=20, U=40, V=50, W=20, X=90, Y=10, Z=50)
+DICT_PRICE = dict(A=50, B=30, C=20, D=15, E=40, F=10, G=20, H=10, I=35, J=60, K=70, L=90, M=15,
+                  N=40, O=10,
+                  P=50, Q=30, R=50, S=20, T=20, U=40, V=50, W=20, X=17, Y=20, Z=21)
 
 DICT_SPECIAL_OFFER_1 = dict(A=dict(qty=5, price=200),
                             H=dict(qty=10, price=80),
