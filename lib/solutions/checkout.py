@@ -41,9 +41,11 @@ def _clean_from_free(skus_counter):
     # check if the item is in DICT_FREE_ITEM_OFFER.
     for item in skus_counter:
         if item in DICT_FREE_ITEM_OFFER:
-            # calculate how many item I
+            # calculate how many items to get free.
             free_item_qty = DICT_FREE_ITEM_OFFER[item]['qty']
             mult = skus_counter[item]/free_item_qty
+
+            # check if my skus_counter I've items to get free.
             for free_item in DICT_FREE_ITEM_OFFER[item]['free_items']:
                 for item_2 in skus_counter:
                     if item_2 in free_item:
@@ -53,25 +55,27 @@ def _clean_from_free(skus_counter):
     return skus_counter
 
 
-
-
-
 def chunk_string(s, n):
+    """
+    Create a group of letters/number giving a string.
+    """
     return [s[i:i+n] for i in range(len(s)-n+1)]
-# noinspection PyUnusedLocal
-# skus = unicode string
+
+
 def checkout(skus):
 
     result = 0
     skus_counter = Counter(chunk_string(skus, 1))
-    #
 
+    # call f(x) to get objects free.
     skus_counter = _clean_from_free(skus_counter)
 
     for item in skus_counter:
 
         qty = skus_counter[item]
         special_offer_qty = None
+
+        # todo: add example special offers.
 
         # check if item has special offers.
         if item in DICT_SPECIAL_OFFER:
