@@ -34,6 +34,8 @@ def checkout(skus):
         qty = int(sku[0][:-1])
         item = sku[0][-1]
 
+        if item in DICT_SPECIAL_OFFER:
+
     # split skus
 
 
