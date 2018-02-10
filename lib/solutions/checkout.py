@@ -24,10 +24,18 @@ Where:
 """
 from collections import Counter
 
-DICT_PRICE = dict(A=50, B=30, C=20, D=15)
+DICT_PRICE = dict(A=50, B=30, C=20, D=15, E=40)
 
 DICT_SPECIAL_OFFER = dict(A=dict(qty=3, price=130),
                           B=dict(qty=2, price=45))
+
+
+DICT_FREE_ITEM_OFFER = dict(E=dict(qty=2, items=[dict(B=dict(qty=1))]))
+
+def _clean_from_free(skus_counter):
+    for item in skus_counter:
+        if item in DICT_FREE_ITEM_OFFER:
+            free_item = DICT_FREE_ITEM_OFFER[item]
 
 
 def chunk_string(s, n):
