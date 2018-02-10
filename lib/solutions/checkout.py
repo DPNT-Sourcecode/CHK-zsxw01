@@ -49,6 +49,8 @@ DICT_FREE_ITEM_OFFER = dict(E=dict(qty=2, free_items=[dict(B=dict(qty=1))]),
                             U=dict(qty=4, free_items=[dict(U=dict(qty=1))]))
 
 
+DICT_BUY_ANY_3(dict)
+
 # TODO: this should be move in a 'constants.py' and/or create model with these values - END
 
 def _clean_from_free(skus_counter):
@@ -73,6 +75,11 @@ def _clean_from_free(skus_counter):
                                                                                               item_2] - clean_qty
 
     return skus_counter
+
+
+def _calc_buy_any_3(skus_counter, result, dict_special_offer):
+
+    return skus_counter, result
 
 
 def _calc_special_offer(skus_counter, result, dict_special_offer):
