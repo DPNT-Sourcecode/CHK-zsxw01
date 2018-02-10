@@ -25,44 +25,32 @@ Where:
 from collections import Counter
 
 
-# TODO: this should be move in a 'constants.py'
-
-+------+-------+------------------------+
-| Item | Price | Special offers         |
-+------+-------+------------------------+
-
-
-
-| F    | 10    | 2F get one F free      |
-| U    | 40    | 3U get one U free      |
-
-| N    | 40    | 3N get one M free      |
-| R    | 50    | 3R get one Q free      |
-
-
-| H    | 10    | 5H for 45, 10H for 80  |
-| K    | 80    | 2K for 150             |
-
-| P    | 50    | 5P for 200             |
-| Q    | 30    | 3Q for 80              |
-
-| V    | 50    | 2V for 90, 3V for 130  |
-
+# TODO: this should be move in a 'constants.py' and/or create model with these values - INIT
 
 DICT_PRICE = dict(A=50, B=30, C=20, D=15, E=40, F=10, G=20, H=10, I=35, J=60, K=80, L=90, M=15, N=40, O=10,
                   P=50, Q=30, R=50, S=30, T=20, U=40, V=50, W=20, X=90, Y=10, Z=50)
 
-DICT_SPECIAL_OFFER_1 = dict(A=dict(qty=5, price=200))
+DICT_SPECIAL_OFFER_1 = dict(A=dict(qty=5, price=200),
+                            H=dict(qty=10, price=80),
+                            V=dict(qty=3, price=130))
 
 DICT_SPECIAL_OFFER = dict(A=dict(qty=3, price=130),
-                          B=dict(qty=2, price=45))
+                          B=dict(qty=2, price=45),
+                          H=dict(qty=5, price=45),
+                          K=dict(qty=2, price=150),
+                          P=dict(qty=5, price=200),
+                          Q=dict(qty=3, price=80),
+                          V=dict(qty=2, price=90),
+                          )
 
 
 DICT_FREE_ITEM_OFFER = dict(E=dict(qty=2, free_items=[dict(B=dict(qty=1))]),
                             F=dict(qty=3, free_items=[dict(F=dict(qty=1))]),
                             N=dict(qty=3, free_items=[dict(M=dict(qty=1))]),
-N=dict(qty=3, free_items=[dict(M=dict(qty=1))]),
+                            R=dict(qty=3, free_items=[dict(Q=dict(qty=1))]),
                             U=dict(qty=4, free_items=[dict(U=dict(qty=1))]))
+
+# TODO: this should be move in a 'constants.py' and/or create model with these values - END
 
 def _clean_from_free(skus_counter):
     """
@@ -104,6 +92,7 @@ def _calc_special_offer(skus_counter, result, dict_special_offer):
             skus_counter[item] -= no_pack * special_offer_qty
 
     return skus_counter, result
+
 
 def chunk_string(s, n):
     """

@@ -42,12 +42,23 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout('BBB'), 75)
 
 
-
     def test_checkout_single_with_specialoffer(self):
         self.assertEqual(checkout('ABCDCBAABCABBAAA'), 200+(2*50)+(45*2)+30+3*20+15)
     #
 
-    #
+    def test_checkout_A(self):
+        self.assertEqual(checkout('A', 50))
+        self.assertEqual(checkout('AAA', 130))
+        self.assertEqual(checkout('AAAa', -1))
+        self.assertEqual(checkout('AAAAA', 200))
+        self.assertEqual(checkout('AAAAAAAA', 200+130))
+        self.assertEqual(checkout('AAAAAAAAA', 200 + 130+50))
+
+    def test_checkout_B(self):
+        self.assertEqual(checkout('B', 30))
+        self.assertEqual(checkout('BB', 45))
+        self.assertEqual(checkout('BBB', 45+30))
+
 
     #
     # def test_checkout_space(self):
