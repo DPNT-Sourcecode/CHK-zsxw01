@@ -48,16 +48,18 @@ def _clean_from_free(skus_counter):
             print '====='
             print DICT_FREE_ITEM_OFFER[item]['free_items']
 
-
             for free_item in DICT_FREE_ITEM_OFFER[item]['free_items']:
-                print free_item
-                print '====='
-                if free_item in skus_counter:
-                    clean_qty = mult * free_item['qty']
-                    print clean_qty
-
-                    skus_counter[free_item]['qty'] = 0 if skus_counter[free_item]['qty'] < free_item else \
-                        skus_counter[free_item]['qty'] - free_item
+                for item_2 in skus_counter:
+                    print '=====>>>>>'
+                    print item_2
+                    print free_item
+                    print '=====>>>>>'
+                    # if item_2 in free_item:
+                    #     clean_qty = mult * free_item['qty']
+                    #     print clean_qty
+                    #
+                    #     skus_counter[item_2]['qty'] = 0 if skus_counter[item_2]['qty'] < free_item else \
+                    #         skus_counter[item_2]['qty'] - free_item
 
     print 'skus_counter end'
     print skus_counter
