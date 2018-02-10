@@ -161,11 +161,17 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout('ZZZS'), 65)
         self.assertEqual(checkout('STXS'), 62)
 
-        self.assertEqual(checkout('XXXS'), 45 + 20)
-        self.assertEqual(checkout('XXXT'), 45 + 20)
+        self.assertEqual(checkout('ZZZSX'), 45 + 20 + 17)
+
+        self.assertEqual(checkout('SYZST'), 45 + 20 + 20)
+        self.assertEqual(checkout('XYZSX'), 45 + 17 + 17)
+
+        self.assertEqual(checkout('ZZZS'), 45 + 20)
+        self.assertEqual(checkout('XXXS'), 45 + 17)
+        self.assertEqual(checkout('XXXT'), 45 + 17)
         self.assertEqual(checkout('XXXX'), 45 + 17)
-        self.assertEqual(checkout('XXXY'), 45 + 20)
-        self.assertEqual(checkout('XXXZ'), 45 + 21)
+        self.assertEqual(checkout('XXXY'), 45 + 17)
+        self.assertEqual(checkout('XXXZ'), 45 + 17)
 
 
 
