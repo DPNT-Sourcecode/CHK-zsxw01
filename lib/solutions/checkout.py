@@ -38,6 +38,7 @@ def _clean_from_free(skus_counter):
     :param skus_counter:
     :return:
     """
+    print skus_counter
     for item in skus_counter:
         if item in DICT_FREE_ITEM_OFFER:
             free_item_qty = DICT_FREE_ITEM_OFFER[item]['qty']
