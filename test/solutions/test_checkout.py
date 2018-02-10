@@ -4,34 +4,39 @@ from checkout import checkout
 
 
 class TestCheckout(unittest.TestCase):
-    #
-    # def test_checkout_with_double_special_offer(self):
-    #     self.assertEqual(checkout('AAAAAAAAAAAAA'), 530)
-    #
-    # def test_checkout_with_single(self):
-    #     self.assertEqual(checkout('ABCDE'), 50+30+20+15+40)
+
+    def test_checkout_with_double_special_offer(self):
+        self.assertEqual(checkout('AAAAAAAAAAAAA'), 530)
+
+    def test_checkout_with_single(self):
+        self.assertEqual(checkout('ABCDE'), 50+30+20+15+40)
+
+    def test_checkout_with_free_1(self):
+        self.assertEqual(checkout('EEEEE'), 5*40)
 
     def test_checkout_with_free(self):
-        self.assertEqual(checkout('EEEEEBBB'), 5*40+45)
+        self.assertEqual(checkout('EEEEEBBB'), 5*40+30)
 
-    # def test_checkout_with_free_special(self):
-    #     self.assertEqual(checkout('EEEEEBBBB'), 5*40+45)
+    def test_checkout_with_free_special(self):
+        self.assertEqual(checkout('EEEEEBBBB'), 5*40+45)
 
+    def test_checkout_with_double_special_offer(self):
+        self.assertEqual(checkout('XXX'), -1)
 
+    def test_checkout_illegal(self):
+        self.assertEqual(checkout('ABCa'), -1)
 
+    def test_checkout_illegal_lower(self):
+        self.assertEqual(checkout('AxA'), -1)
 
 
     # def test_checkout_single_with_specialoffer(self):
     #     self.assertEqual(checkout('ABCDCBAABCABBAAA'), 505)
     #
-    # def test_checkout_single(self):
-    #     self.assertEqual(checkout('BBB'), 75)
+    def test_checkout_single(self):
+        self.assertEqual(checkout('BBB'), 75)
     #
-    # def test_checkout_illegal(self):
-    #     self.assertEqual(checkout('ABCa'), -1)
-    #
-    # def test_checkout_illegal_lower(self):
-    #     self.assertEqual(checkout('AxA'), -1)
+
     #
     # def test_checkout_space(self):
     #     self.assertEqual(checkout(''), 0)

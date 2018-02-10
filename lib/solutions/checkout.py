@@ -90,6 +90,8 @@ def checkout(skus):
     # call f(x) to get objects free.
     skus_counter = _clean_from_free(skus_counter)
 
+    print 'I HAVE'
+    print skus_counter
 
     skus_counter, result = _calc_special_offer(skus_counter, result, DICT_SPECIAL_OFFER_1)
 
