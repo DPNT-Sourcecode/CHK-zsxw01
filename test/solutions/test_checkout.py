@@ -12,7 +12,7 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout('FFF'), 10*2)
 
     def test_checkout_with_moreF(self):
-        self.assertEqual(checkout('FFFFFFFFFFFF'), (12/3*2)*2)
+        self.assertEqual(checkout('FFFFFFFFFFFF'), (12/3*2) * 10)
 
     def test_checkout_with_double_special_offer(self):
         self.assertEqual(checkout('AAAAAAAAAAAAA'), 530)
