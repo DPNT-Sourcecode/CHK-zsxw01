@@ -29,12 +29,15 @@ class TestCheckout(unittest.TestCase):
     def test_checkout_illegal_lower(self):
         self.assertEqual(checkout('AxA'), -1)
 
-
-    # def test_checkout_single_with_specialoffer(self):
-    #     self.assertEqual(checkout('ABCDCBAABCABBAAA'), 505)
-    #
     def test_checkout_single(self):
         self.assertEqual(checkout('BBB'), 75)
+
+
+
+    def test_checkout_single_with_specialoffer(self):
+        self.assertEqual(checkout('ABCDCBAABCABBAAA'), 200+(45*2)+30+3*20+15)
+    #
+
     #
 
     #
