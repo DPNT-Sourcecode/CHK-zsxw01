@@ -35,7 +35,7 @@ class TestCheckout(unittest.TestCase):
 
 
     def test_checkout_single_with_specialoffer(self):
-        self.assertEqual(checkout('ABCDCBAABCABBAAA'), 200+(45*2)+30+3*20+15)
+        self.assertEqual(checkout('ABCDCBAABCABBAAA'), 200+(2*50)+(45*2)+30+3*20+15)
     #
 
     #
