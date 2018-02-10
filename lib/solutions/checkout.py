@@ -40,10 +40,9 @@ def checkout(skus):
     skus_counter = Counter(chunk_string(skus, 1))
     print skus_counter
 
-    for sku in skus_counter:
+    for item in skus_counter:
 
-        item = sku
-        qty = skus_counter[sku]
+        qty = skus_counter[item]
 
         # try:
         #     qty = int(sku[:-1])

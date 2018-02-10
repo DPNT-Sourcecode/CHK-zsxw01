@@ -11,7 +11,13 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout('BBB'), 75)
 
     def test_checkout_illegal(self):
-        self.assertEqual(checkout('B'), -1)
+        self.assertEqual(checkout('ABCa'), -1)
+
+    def test_checkout_illegal_lower(self):
+        self.assertEqual(checkout('AxA'), -1)
+
+    def test_checkout_space(self):
+        self.assertEqual(checkout(''), 0)
 
     def test_checkout_double(self):
         self.assertEqual(checkout('BBAB'), 75+50)
