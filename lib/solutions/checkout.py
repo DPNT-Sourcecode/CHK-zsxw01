@@ -23,9 +23,16 @@ Where:
 
 """
 
+DICT_SPECIAL_OFFER = dict(A=dict(qty=3, price=150),
+                          B=dict(qty=2, price=45))
+
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
+
+    for sku in skus.split():
+        qty = int(sku[0][:-1])
+        item = sku[0][-1]
 
     # split skus
 
