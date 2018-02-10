@@ -24,7 +24,6 @@ Where:
 """
 from collections import Counter
 
-
 # TODO: this should be move in a 'constants.py' and/or create model with these values - INIT
 
 DICT_PRICE = dict(A=50, B=30, C=20, D=15, E=40, F=10, G=20, H=10, I=35, J=60, K=80, L=90, M=15, N=40, O=10,
@@ -43,12 +42,12 @@ DICT_SPECIAL_OFFER = dict(A=dict(qty=3, price=130),
                           V=dict(qty=2, price=90),
                           )
 
-
 DICT_FREE_ITEM_OFFER = dict(E=dict(qty=2, free_items=[dict(B=dict(qty=1))]),
                             F=dict(qty=3, free_items=[dict(F=dict(qty=1))]),
                             N=dict(qty=3, free_items=[dict(M=dict(qty=1))]),
                             R=dict(qty=3, free_items=[dict(Q=dict(qty=1))]),
                             U=dict(qty=4, free_items=[dict(U=dict(qty=1))]))
+
 
 # TODO: this should be move in a 'constants.py' and/or create model with these values - END
 
@@ -63,14 +62,15 @@ def _clean_from_free(skus_counter):
         if item in DICT_FREE_ITEM_OFFER:
             # calculate how many items to get free.
             free_item_qty = DICT_FREE_ITEM_OFFER[item]['qty']
-            mult = skus_counter[item]/free_item_qty
+            mult = skus_counter[item] / free_item_qty
 
             # check if my skus_counter I've items to get free.
             for free_item in DICT_FREE_ITEM_OFFER[item]['free_items']:
                 for item_2 in skus_counter:
                     if item_2 in free_item:
                         clean_qty = mult * free_item[item_2]['qty']
-                        skus_counter[item_2] = 0 if skus_counter[item_2] < clean_qty else skus_counter[item_2] - clean_qty
+                        skus_counter[item_2] = 0 if skus_counter[item_2] < clean_qty else skus_counter[
+                                                                                              item_2] - clean_qty
 
     return skus_counter
 
@@ -98,11 +98,10 @@ def chunk_string(s, n):
     """
     Create a group of letters/number giving a string.
     """
-    return [s[i:i+n] for i in range(len(s)-n+1)]
+    return [s[i:i + n] for i in range(len(s) - n + 1)]
 
 
 def checkout(skus):
-
     result = 0
     skus_counter = Counter(chunk_string(skus, 1))
 
