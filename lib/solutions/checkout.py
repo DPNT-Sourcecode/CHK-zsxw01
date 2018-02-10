@@ -38,30 +38,18 @@ def _clean_from_free(skus_counter):
     :param skus_counter:
     :return:
     """
-    print 'skus_counter init'
-    print skus_counter
+    # check if the item is in DICT_FREE_ITEM_OFFER.
     for item in skus_counter:
         if item in DICT_FREE_ITEM_OFFER:
+            # calculate how many item I
             free_item_qty = DICT_FREE_ITEM_OFFER[item]['qty']
             mult = skus_counter[item]/free_item_qty
-
-
             for free_item in DICT_FREE_ITEM_OFFER[item]['free_items']:
                 for item_2 in skus_counter:
                     if item_2 in free_item:
-                        print free_item[item_2]['qty']
-                         # clean_qty = mult * free_item[item_2]['qty']
-                         # print clean_qty
-                         # print skus_counter[item_2]['qty']
-                         #
-                         # if skus_counter[item_2]['qty'] < clean_qty:
-                         #     print 'ooo'
-                    # #
-                    #      skus_counter[item_2]['qty'] = 0  else \
-                    #          skus_counter[item_2]['qty'] - clean_qty
+                        clean_qty = mult * free_item[item_2]['qty']
+                        skus_counter[item_2] = 0 if skus_counter[item_2] < clean_qty else skus_counter[item_2] - clean_qty
 
-    print 'skus_counter end'
-    print skus_counter
     return skus_counter
 
 
